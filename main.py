@@ -1,4 +1,6 @@
 import sys
+import telebot
+import datetime
 
 I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')) else False)
 PATH_TO_SELF = sys.executable if I_AM_EXECUTABLE else __file__
@@ -243,7 +245,8 @@ def parse_argv():
         args_parser.add_argument('--disable-progress-bar', action='store_true', help='Disables the webdriver download progress bar')
         args_parser.add_argument('--disable-output-file', action='store_true', help='Disables the output txt file generation')
         args_parser.add_argument('--repeat', type=int, default=1, help=f'Specifies how many times to repeat generation (Accepts numbers from 1 to {MAX_REPEATS_LIMIT})')
-        try:
+        args_parser.add_argument('--token', help='Token value')  
+      try:
             global args
             args = vars(args_parser.parse_args())
             if args['repeat'] < 1 or args['repeat'] > MAX_REPEATS_LIMIT:
@@ -324,6 +327,9 @@ def main(disable_exit=False):
         
         # initialization and configuration of everything necessary for work            
         driver = None
+        please_comment = "Активировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬"
+        token_value = args['token']
+        bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         webdriver_path = None
         browser_name = GOOGLE_CHROME
         if args['firefox']:
@@ -397,6 +403,7 @@ def main(disable_exit=False):
                     EK_obj = EK(email_obj, driver, 'ESET HOME' if args['key'] else 'SMALL BUSINESS')
                     EK_obj.sendRequestForKey()
                     license_name, license_key, license_out_date = EK_obj.getLicenseData()
+                    license_out_date = datetime.datetime.strptime(license_out_date, '%m/%d/%Y').strftime('%d/%m/%Y')
                     output_line = '\n'.join([
                         '',
                         '-------------------------------------------------',
@@ -409,6 +416,18 @@ def main(disable_exit=False):
                         '-------------------------------------------------',
                         ''
                     ])
+                    output_line = f'\n🛡 Продукт: *{license_name}*\n🕐 Срок действия: *{license_out_date}*\n🔐 Ключ активации: `{license_key}`'
+                    if args['key']:
+                      activate_products = '\n🔓 Активирует: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
+                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
+                    if args['small_business_key']:
+                     activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
+                     hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
+                    if args['vpn_codes']:
+                     activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
+                     hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
+                    bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                    bot.send_message(-1001233475775, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)  
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
@@ -429,6 +448,11 @@ def main(disable_exit=False):
                                 '-------------------------------------------------',
                                 ''
                             ])
+                            hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#keys \\#license'
+                            license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
+                            output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{license_out_date}*\n\n{license_keys_formatted}\n'
+                            bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                            bot.send_message(-1001233475775, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
 
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
@@ -449,6 +473,7 @@ def main(disable_exit=False):
                     output_filename = 'ESET KEYS.txt'
                     EPHK_obj = EPHK(email_obj, eset_password, driver)
                     license_name, license_key, license_out_date, obtained_from_site = EPHK_obj.getLicenseData()
+                    license_out_date = datetime.datetime.strptime(license_out_date, '%m/%d/%Y').strftime('%d/%m/%Y')
                     if license_name is not None:
                         output_line = '\n'.join([
                             '',
@@ -462,6 +487,15 @@ def main(disable_exit=False):
                             '---------------------------------------------------------------------',
                             ''
                         ])
+                    output_line = f'\n🛡 Продукт: *{license_name}*\n🕐 Срок действия: *{license_out_date}*\n🔐 Ключ активации: `{license_key}`'
+                    if args['key']:
+                      activate_products = '\n🔓 Активирует: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
+                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
+                    if args['small_business_key']:
+                     activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
+                     hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
+                     bot.send_message(-1002475137672, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                     bot.send_message(-1001233475775, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
 
             # end
             console_log(output_line)
