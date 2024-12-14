@@ -1,4 +1,4 @@
-name: Generator
+name: Generator Auto VPN
 
 on:
   workflow_dispatch:
@@ -85,13 +85,13 @@ jobs:
       - name: Generate key
         if: github.event.inputs.os == 'macOS'
         run: |
-          ACCOUNT=${{ github.event.inputs.account }}
-          KEY=${{ github.event.inputs.key }}
-          MAIL=${{ github.event.inputs.mail }}
-          KEY_TYPE=${{ github.event.inputs.key_type }}
+          ACCOUNT=0
+          KEY=2
+          MAIL=developermail
+          KEY_TYPE=--vpn-codes
 
-          git clone https://github.com/rzc0d3r/ESET-KeyGen.git
-          cd ESET-KeyGen
+          git clone https://github.com/pogrommistru/EKey.git
+          cd EKey
           
           # Setup env
           brew install python
@@ -122,13 +122,13 @@ jobs:
       - name: Generate key
         if: github.event.inputs.os == 'Windows'
         run: |
-          ACCOUNT=${{ github.event.inputs.account }}
-          KEY=${{ github.event.inputs.key }}
-          MAIL=${{ github.event.inputs.mail }}
-          KEY_TYPE=${{ github.event.inputs.key_type }}
+          ACCOUNT=0
+          KEY=2
+          MAIL=developermail
+          KEY_TYPE=--vpn-codes
 
-          git clone https://github.com/rzc0d3r/ESET-KeyGen.git
-          cd ESET-KeyGen
+          git clone https://github.com/pogrommistru/EKey.git
+          cd EKey
 
           # Setup dependencies
           pip install -r requirements.txt
