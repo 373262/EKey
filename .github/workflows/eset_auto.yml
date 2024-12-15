@@ -41,6 +41,8 @@ on:
         - Linux
         - Windows
         default: Linux
+      schedule:
+        - cron: "0 */1 * * *"
 jobs:
   Linux:
     runs-on: ubuntu-latest
