@@ -48,7 +48,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate key
-        if: github.event.inputs.os == 'Linux'
         run: |
           ACCOUNT=0
           KEY=2
