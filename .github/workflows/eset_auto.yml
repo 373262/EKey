@@ -51,7 +51,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=mailticking
+          MAIL=1secmail
           KEY_TYPE=--key
 
           git clone https://github.com/pogrommistru/EKey.git
