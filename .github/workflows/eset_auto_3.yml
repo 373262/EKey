@@ -51,7 +51,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=mailticking
+          MAIL=guerrillamail
           KEY_TYPE=--vpn-codes
 
           git clone https://github.com/pogrommistru/EKey.git
