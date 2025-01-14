@@ -447,7 +447,7 @@ def main(disable_exit=False):
                                 '-------------------------------------------------',
                                 ''
                             ])
-                            hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#keys \\#license'
+                            hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license'
                             license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{license_out_date}*\n\n{license_keys_formatted}\n'
                             bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
