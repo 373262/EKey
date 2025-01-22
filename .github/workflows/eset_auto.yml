@@ -1,4 +1,4 @@
-name: Generator
+name: Generator Auto Home
 
 on:
   workflow_dispatch:
@@ -58,7 +58,7 @@ jobs:
 
           git clone https://github.com/pogrommistru/EKey.git
           cd EKey
-          
+
           # Setup env
           sudo apt update
           sudo apt install -y python3-pip python3-venv
@@ -95,7 +95,7 @@ jobs:
 
           git clone https://github.com/pogrommistru/EKey.git
           cd EKey
-          
+
           # Setup env
           brew install python
           python3 -m venv venv
