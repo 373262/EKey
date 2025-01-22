@@ -68,17 +68,17 @@ jobs:
 
           if [[ ${ACCOUNT} -ne 0 && ${KEY} -ne 0 ]]; then
             python3 main.py --chrome --account --email-api ${MAIL} --skip-webdriver-menu --token ${{ secrets.TOKEN }} --skip-update-check --no-logo --disable-progress-bar --repeat ${ACCOUNT}
-            python3 main.py --chrome ${KEY_TYPE} --email-api ${MAIL} --skip-webdriver-menu --token ${{ secrets.TOKEN }} --skip-update-check --no-logo --disable-progress-bar --repeat ${KEY}
+            python3 main.py --chrome ${KEY_TYPE} --email-api ${MAIL} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar --repeat ${KEY}
             echo "Account:" >> $GITHUB_STEP_SUMMARY
             cat ./*ACCOUNTS.txt >> $GITHUB_STEP_SUMMARY
             echo -e "\nKey:" >> $GITHUB_STEP_SUMMARY
             cat ./*KEYS.txt >> $GITHUB_STEP_SUMMARY
           elif [[ ${ACCOUNT} -ne 0 ]]; then
-            python3 main.py --chrome --account --email-api ${MAIL} --skip-webdriver-menu --token ${{ secrets.TOKEN }} --skip-update-check --no-logo --disable-progress-bar --repeat ${ACCOUNT}
+            python3 main.py --chrome --account --email-api ${MAIL} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar --repeat ${ACCOUNT}
             echo -e "\nAccount:" >> $GITHUB_STEP_SUMMARY
             cat ./*ACCOUNTS.txt >> $GITHUB_STEP_SUMMARY
           elif [[ ${KEY} -ne 0 ]]; then
-            python3 main.py --chrome ${KEY_TYPE} --email-api ${MAIL} --skip-webdriver-menu --token ${{ secrets.TOKEN }} --skip-update-check --no-logo --disable-progress-bar --repeat ${KEY}
+            python3 main.py --chrome ${KEY_TYPE} --email-api ${MAIL} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar --repeat ${KEY}
             echo -e "\nKey:" >> $GITHUB_STEP_SUMMARY
             cat ./*KEYS.txt >> $GITHUB_STEP_SUMMARY
           fi
