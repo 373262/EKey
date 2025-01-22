@@ -1,6 +1,8 @@
 name: Generator Auto Home
 
 on:
+  schedule:
+    - cron: "0 */1 * * *"
   workflow_dispatch:
     inputs:
       account:
@@ -42,8 +44,6 @@ on:
         - Linux
         - Windows
         default: Linux
-      schedule:
-        - cron: "0 */1 * * *"
 jobs:
   Linux:
     runs-on: ubuntu-latest
