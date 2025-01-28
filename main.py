@@ -427,7 +427,7 @@ def main(disable_exit=False):
                         ''
                     ])
                     output_line = f'\n🛡 Продукт: *{license_name}*\n🕐 Срок действия: *{license_out_date}*\n🔐 Ключ активации: `{license_key}`'
-                    output_line_vk = f'\n🛡 Продукт: {license_name}\n🕐 Срок действия: {license_out_date}\n🔐 Ключ активации: {license_key}`
+                    output_line_vk = f'\n🛡 Продукт: {license_name}\n🕐 Срок действия: {license_out_date}\n🔐 Ключ активации: {license_key}'
                     if args['key']:
                       activate_products = '\n🔓 Активирует: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
                       activate_products_vk = '\n🔓 Активирует: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
