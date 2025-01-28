@@ -248,8 +248,8 @@ def parse_argv():
         args_parser.add_argument('--disable-output-file', action='store_true', help='Disables the output txt file generation')
         args_parser.add_argument('--repeat', type=int, default=1, help=f'Specifies how many times to repeat generation (Accepts numbers from 1 to {MAX_REPEATS_LIMIT})')
         args_parser.add_argument('--token', help='Token value')
-        args_parser.add_argument('--vk-token', help='VK Token')
-        args_parser.add_argument('--vk-group-id', help='VK group')
+        args_parser.add_argument('--vk-token', type=str, default='', help='VK API Token for posting to group')
+        args_parser.add_argument('--vk-group-id', type=str, default='', help='VK Group ID (with minus sign)')
         try:
             global args
             args = vars(args_parser.parse_args())
@@ -336,8 +336,8 @@ def main(disable_exit=False):
         bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         webdriver_path = None
         browser_name = GOOGLE_CHROME
-        vk_token_value = args['vk-token']
-        vk_group_id_value = args['vk-group-id']
+        vk_token_value = args.get('vk-token', '') 
+        vk_group_id_value = args.get('vk-group-id', '')
         vk_session = vk_api.VkApi(token=vk_token_value)
         vk = vk_session.get_api()
         upload = VkUpload(vk_session)
