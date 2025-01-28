@@ -340,6 +340,7 @@ def main(disable_exit=False):
         vk_group_id_value = args['vkgroupid']
         vk_session = vk_api.VkApi(token=vk_token_value)
         vk = vk_session.get_api()
+        vk_end = "\n\n\nАктивировали ⁉\n\nПоставьте лайк ❤ и напишите в комментарии 💬\n\n🍺 Поблагодарить - vk.cc/cHjcEr\n\n\nНе успеваешь взять бесплатный ключ?\n\n✅ Подписывайся на наш Telegram канал t.me/mynod32\n\n✅ Опция \"Персональный ключ на 30 дней\" - 50 руб.\n\n✅ Опция \"Ключ на 90 дней для EIS, EAV\" - 120 руб."
         upload = VkUpload(vk_session)
         if args['firefox']:
             browser_name = MOZILLA_FIREFOX
@@ -506,7 +507,7 @@ def main(disable_exit=False):
                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                      bot.send_message(-1002475137672, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                      bot.send_message(-1001233475775, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
-                     vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='photo-203143822_457239279')
+                     vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + vk_end, attachments='photo-203143822_457239279')
             # end
             console_log(output_line)
             if not args['disable_output_file']:
