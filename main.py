@@ -445,7 +445,7 @@ def main(disable_exit=False):
                      photo_attachment = 'photo-203143822_457239283'
                     bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     bot.send_message(-1001233475775, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)  
-                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + "\n\n" + vk_end , attachments=photo_attachment)
+                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + "\n\n" + vk_end , attachments=photo_attachment, donut_paid_duration=1296000)
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
