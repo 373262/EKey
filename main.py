@@ -430,15 +430,18 @@ def main(disable_exit=False):
                     if args['key']:
                       activate_products = '\n🔓 Активирует: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
                       hashtags = '\n\n\\#ESET \\#NOD32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
+                      photo_attachment = 'photo-203143822_457239282'
                     if args['small_business_key']:
                      activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
+                     photo_attachment = 'photo-203143822_457239283'
                     if args['vpn_codes']:
                      activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
+                     photo_attachment = 'photo-203143822_457239283'
                     bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     bot.send_message(-1001233475775, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)  
-                    vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
+                    vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + vk_end, attachments=photo_attachment)
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
@@ -460,11 +463,12 @@ def main(disable_exit=False):
                                 ''
                             ])
                             hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license'
+                            photo_attachment = 'photo-203143822_457239280'
                             license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{license_out_date}*\n\n{license_keys_formatted}\n'
                             bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                             bot.send_message(-1001233475775, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
-                            vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
+                            vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + vk_end, attachments=photo_attachment)
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
                 EPHR_obj = EPHR(email_obj, eset_password, driver)
@@ -502,12 +506,14 @@ def main(disable_exit=False):
                     if args['key']:
                       activate_products = '\n🔓 Активирует: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
                       hashtags = '\n\n\\#ESET \\#NOD32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
+                      photo_attachment = 'photo-203143822_457239282'
                     if args['small_business_key']:
                      activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
+                     photo_attachment = 'photo-203143822_457239283'
                      bot.send_message(-1002475137672, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                      bot.send_message(-1001233475775, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
-                     vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + vk_end, attachments='photo-203143822_457239279')
+                     vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + vk_end, attachments=photo_attachment)
             # end
             console_log(output_line)
             if not args['disable_output_file']:
