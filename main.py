@@ -249,7 +249,7 @@ def parse_argv():
         args_parser.add_argument('--repeat', type=int, default=1, help=f'Specifies how many times to repeat generation (Accepts numbers from 1 to {MAX_REPEATS_LIMIT})')
         args_parser.add_argument('--token', help='Token value')
         args_parser.add_argument('--vk-token', type=str, default='', help='VK API Token for posting to group')
-        args_parser.add_argument('--vk-group-id', type=str, default='', help='VK Group ID (with minus sign)')
+        args_parser.add_argument('--vk-group-id', type=int, default='', help='VK Group ID (with minus sign)')
         try:
             global args
             args = vars(args_parser.parse_args())
