@@ -338,7 +338,7 @@ def main(disable_exit=False):
         browser_name = GOOGLE_CHROME
         vk_token_value = args['vktoken']
         vk_group_id_value = args['vkgroupid']
-        vk_session = vk_api.VkApi(token=vk_token_value)
+        vk_session = vk_api.VkApi(token=vk_token_value,api_version=5.131)
         vk = vk_session.get_api()
         vk_end = "\n\n\n\nАктивировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить - vk.cc/cHjcEr\n\n\n\nНе успеваешь взять бесплатный ключ?\n✅ Подписывайся на наш Telegram канал t.me/mynod32\n✅ Опция \"Персональный ключ на 30 дней\" - 50 руб.\n✅ Опция \"Ключ на 90 дней для EIS, EAV\" - 120 руб."
         upload = VkUpload(vk_session)
