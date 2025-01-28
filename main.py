@@ -249,6 +249,7 @@ def parse_argv():
         args_parser.add_argument('--repeat', type=int, default=1, help=f'Specifies how many times to repeat generation (Accepts numbers from 1 to {MAX_REPEATS_LIMIT})')
         args_parser.add_argument('--token', help='Token value')
         args_parser.add_argument('--vktoken', type=str, default='', help='VK API Token for posting to group')
+        args_parser.add_argument('--vktoken2', type=str, default='', help='VK API Token for posting to group')
         args_parser.add_argument('--vkgroupid', type=str, default='', help='VK Group ID (with minus sign)')
         try:
             global args
@@ -340,6 +341,12 @@ def main(disable_exit=False):
         vk_group_id_value = args['vkgroupid']
         vk_session = vk_api.VkApi(token=vk_token_value,api_version=5.131)
         vk = vk_session.get_api()
+
+        vk_token_value2 = args['vktoken2']
+        vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
+        vk2 = vk_session2.get_api()
+
+      
         vk_end = "\n\n\n\nАктивировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить - vk.cc/cHjcEr\n\n\n\nНе успеваешь взять бесплатный ключ?\n✅ Подписывайся на наш Telegram канал t.me/mynod32\n✅ Опция \"Персональный ключ на 30 дней\" - 50 руб.\n✅ Опция \"Ключ на 90 дней для EIS, EAV\" - 120 руб."
         upload = VkUpload(vk_session)
         if args['firefox']:
@@ -446,7 +453,7 @@ def main(disable_exit=False):
                     bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     bot.send_message(-1001233475775, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)  
                     vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + "\n\n" + vk_end , attachments=photo_attachment, donut_paid_duration=1296000)
-                    vk.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=1296000)
+                    vk2.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=1296000)
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
@@ -476,7 +483,7 @@ def main(disable_exit=False):
                             bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                             bot.send_message(-1001233475775, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                             vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + "\n\n" + vk_end , attachments=photo_attachment, donut_paid_duration=1296000)
-                            vk.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=1296000)
+                            vk2.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=1296000)
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
                 EPHR_obj = EPHR(email_obj, eset_password, driver)
@@ -525,7 +532,7 @@ def main(disable_exit=False):
                      bot.send_message(-1002475137672, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                      bot.send_message(-1001233475775, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                      vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=1296000)
-                     vk.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=1296000)
+                     vk2.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=1296000)
             # end
             console_log(output_line)
             if not args['disable_output_file']:
