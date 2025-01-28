@@ -336,7 +336,7 @@ def main(disable_exit=False):
         bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         webdriver_path = None
         browser_name = GOOGLE_CHROME
-        vk_token_value = args['vk-token']
+        vk_token_value = "vk1.a.zo-d3aqZHn_AM1M4HjHqjzhGcjHxVKp1zYwxRAZT8oPrlkKAgbcMo-a7HI-6fOt2oUYj5uiibsWGnTv1YEf53yIwdCXZuwUlzD58wUX2HNVam9O1rws9_kod-bWoGi73w5z7fIhO904GJ5NKRhN68_twiqnB0zvRAuL8kM9wpMwOxGNtcj5C222XOFD7-9XkpszlxE9KaNjHBR4UcrM0Pg"
         console_log('vk_token_value = ' + vk_token_value)
         vk_group_id_value = args['vk-group-id']
         vk_session = vk_api.VkApi(token=vk_token_value)
