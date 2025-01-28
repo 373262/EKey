@@ -336,9 +336,9 @@ def main(disable_exit=False):
         bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         webdriver_path = None
         browser_name = GOOGLE_CHROME
-        vk_token = args['vk-token']
-        vk_group_id = args['vk-group-id']
-        vk_session = vk_api.VkApi(token=vk_token)
+        vk_token_value = args['vk-token']
+        vk_group_id_value = args['vk-group-id']
+        vk_session = vk_api.VkApi(token=vk_token_value)
         vk = vk_session.get_api()
         upload = VkUpload(vk_session)
         if args['firefox']:
@@ -437,7 +437,7 @@ def main(disable_exit=False):
                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                     bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     bot.send_message(-1001233475775, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)  
-                    vk.wall.post(owner_id=vk_group_id, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
+                    vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
@@ -463,7 +463,7 @@ def main(disable_exit=False):
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{license_out_date}*\n\n{license_keys_formatted}\n'
                             bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                             bot.send_message(-1001233475775, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
-                            vk.wall.post(owner_id=vk_group_id, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
+                            vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
                 EPHR_obj = EPHR(email_obj, eset_password, driver)
@@ -506,7 +506,7 @@ def main(disable_exit=False):
                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                      bot.send_message(-1002475137672, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                      bot.send_message(-1001233475775, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
-                     vk.wall.post(owner_id=vk_group_id, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
+                     vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
             # end
             console_log(output_line)
             if not args['disable_output_file']:
