@@ -506,7 +506,7 @@ def main(disable_exit=False):
                      hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                      bot.send_message(-1002475137672, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                      bot.send_message(-1001233475775, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
-                     vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='')
+                     vk.wall.post(owner_id=vk_group_id_value, message=output_line + activate_products + "\n\n" + please_comment, attachments='photo-203143822_457239279')
             # end
             console_log(output_line)
             if not args['disable_output_file']:
