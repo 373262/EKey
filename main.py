@@ -336,8 +336,9 @@ def main(disable_exit=False):
         bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         webdriver_path = None
         browser_name = GOOGLE_CHROME
-        vk_token_value = args.get('vk-token', '') 
-        vk_group_id_value = args.get('vk-group-id', '')
+        vk_token_value = args['vk-token']
+        console_log('vk_token_value = ' + vk_token_value)
+        vk_group_id_value = args['vk-group-id']
         vk_session = vk_api.VkApi(token=vk_token_value)
         vk = vk_session.get_api()
         upload = VkUpload(vk_session)
