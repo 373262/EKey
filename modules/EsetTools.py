@@ -4,6 +4,7 @@ from pathlib import Path
 
 import subprocess
 import colorama
+import logging
 import time
 import sys
 
