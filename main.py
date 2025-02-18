@@ -576,8 +576,8 @@ def main(disable_exit=False):
                             ])
                             hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license'
                             photo_attachment = 'photo-203143822_457239280'
-                            license_keys_formatted = "".join([f"🔐 Ключ активации: `{l_key}`\n\n" for key in vpn_codes_line.split(', ')])
-                            license_keys_formatted_vk = "".join([f"🔐 Ключ активации: {l_key}\n" for key in vpn_codes_line.split(', ')])
+                            license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
+                            license_keys_formatted_vk = "".join([f"🔐 Ключ активации: {key}\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{l_out_date}*\n\n{license_keys_formatted}\n'
                             output_line_vk = f'\n🛡 Продукт: ESET VPN\n🕐 Срок действия: {l_out_date}\n\n{license_keys_formatted_vk}\n'
                             bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
