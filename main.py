@@ -131,163 +131,162 @@ import re
 PATH_TO_SELF = sys.executable if I_AM_EXECUTABLE else __file__ # importing modules removes the original value of the variable
 
 class MBCIConfigManager:
-	def __init__(self, path=CONFIG_PATH):
-	self.path = path
+    def __init__(self, path=CONFIG_PATH):
+        self.path = path
 
-	def save(self, args):
-	config = {
-		'Browser': [key for key in MBCI_BROWSERS_ARGS if args[key]][0],
-		'Mode of operation': [key for key in MBCI_MODES_OF_OPERATION_ARGS if args[key.replace('-', '_')]][0],
-		'Email API': args['email_api']
-	}
-	
-	for key in MBCI_OTHER_ARGS:
-		config[key] = args[key]
-	
-	json.dump(config, open(CONFIG_PATH, 'w'), indent=4)
-	
-	def load(self):
-	config = json.load(open(self.path))
-	try:
-		filtered_config = {}
-		browser = config.pop('Browser')
-		mode_of_operation = config.pop('Mode of operation')
-		email_api = config.pop('Email API')
-		if browser in MBCI_BROWSERS_ARGS:
-		filtered_config[browser] = True
-		if mode_of_operation in MBCI_MODES_OF_OPERATION_ARGS:
-		filtered_config[mode_of_operation] = True
-		if email_api in AVAILABLE_EMAIL_APIS:
-		filtered_config['email_api'] = email_api
-		for key in config:
-		if key in MBCI_OTHER_ARGS:
-			filtered_config[key] = config[key]
-		return filtered_config
-	except:
-		return False
-	
-	@property
-	def is_exists(self):
-	return os.path.isfile(self.path)
+    def save(self, args):
+        config = {
+            'Browser': [key for key in MBCI_BROWSERS_ARGS if args[key]][0],
+            'Mode of operation': [key for key in MBCI_MODES_OF_OPERATION_ARGS if args[key.replace('-', '_')]][0],
+            'Email API': args['email_api']
+        }
+        
+        for key in MBCI_OTHER_ARGS:
+            config[key] = args[key]
+        
+        json.dump(config, open(CONFIG_PATH, 'w'), indent=4)
+    
+    def load(self):
+        config = json.load(open(self.path))
+        try:
+            filtered_config = {}
+            browser = config.pop('Browser')
+            mode_of_operation = config.pop('Mode of operation')
+            email_api = config.pop('Email API')
+            if browser in MBCI_BROWSERS_ARGS:
+                filtered_config[browser] = True
+            if mode_of_operation in MBCI_MODES_OF_OPERATION_ARGS:
+                filtered_config[mode_of_operation] = True
+            if email_api in AVAILABLE_EMAIL_APIS:
+                filtered_config['email_api'] = email_api
+            for key in config:
+                if key in MBCI_OTHER_ARGS:
+                    filtered_config[key] = config[key]
+            return filtered_config
+        except:
+            return False
+    
+    @property
+    def is_exists(self):
+        return os.path.isfile(self.path)
 
 def RunMenu():
-	MainMenu = ViewMenu(LOGO+'\n---- Main Menu ----')
-	
-	SettingMenu = ViewMenu(LOGO+'\n---- Settings Menu ----')
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='Browsers',
-		action='store_true',
-		args_names=MBCI_BROWSERS_ARGS,
-		default_value=[key for key in MBCI_BROWSERS_ARGS if args[key]][0]
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='Modes of operation',
-		action='store_true',
-		args_names=MBCI_MODES_OF_OPERATION_ARGS,
-		default_value=[key for key in MBCI_MODES_OF_OPERATION_ARGS if args[key.replace('-', '_')]][0]
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='Email APIs',
-		action='choice',
-		args_names='email-api',
-		choices=AVAILABLE_EMAIL_APIS,
-		default_value=args['email_api']
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--skip-webdriver-menu',
-		action='bool_switch',
-		args_names='skip-webdriver-menu'
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--no-headless',
-		action='bool_switch',
-		args_names='no-headless'
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--custom-browser-location',
-		action='manual_input',
-		args_names='custom-browser-location',
-		default_value=args['custom_browser_location']
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--custom-email-api',
-		action='bool_switch',
-		args_names='custom-email-api'
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--skip-update-check',
-		action='bool_switch',
-		args_names='skip_update_check'
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--disable-progress-bar',
-		action='bool_switch',
-		args_names='disable_progress_bar'
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--disable-output-file',
-		action='bool_switch',
-		args_names='disable_output_file'
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--disable-logging',
-		action='bool_switch',
-		args_names='disable_logging'
-	)
-	)
-	SettingMenu.add_item(
-	OptionAction(
-		args,
-		title='--repeat',
-		action='manual_input',
-		args_names='repeat',
-		default_value=args['repeat'],
-		data_type=int
-	)
-	)
+    MainMenu = ViewMenu(LOGO+'\n---- Main Menu ----')
+    
+    SettingMenu = ViewMenu(LOGO+'\n---- Settings Menu ----')
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='Browsers',
+            action='store_true',
+            args_names=MBCI_BROWSERS_ARGS,
+            default_value=[key for key in MBCI_BROWSERS_ARGS if args[key]][0]
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='Modes of operation',
+            action='store_true',
+            args_names=MBCI_MODES_OF_OPERATION_ARGS,
+            default_value=[key for key in MBCI_MODES_OF_OPERATION_ARGS if args[key.replace('-', '_')]][0]
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='Email APIs',
+            action='choice',
+            args_names='email-api',
+            choices=AVAILABLE_EMAIL_APIS,
+            default_value=args['email_api']
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--skip-webdriver-menu',
+            action='bool_switch',
+            args_names='skip-webdriver-menu'
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--no-headless',
+            action='bool_switch',
+            args_names='no-headless'
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--custom-browser-location',
+            action='manual_input',
+            args_names='custom-browser-location',
+            default_value=args['custom_browser_location']
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--custom-email-api',
+            action='bool_switch',
+            args_names='custom-email-api'
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--skip-update-check',
+            action='bool_switch',
+            args_names='skip_update_check'
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--disable-progress-bar',
+            action='bool_switch',
+            args_names='disable_progress_bar'
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--disable-output-file',
+            action='bool_switch',
+            args_names='disable_output_file'
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--disable-logging',
+            action='bool_switch',
+            args_names='disable_logging'
+        )
+    )
+    SettingMenu.add_item(
+        OptionAction(
+            args,
+            title='--repeat',
+            action='manual_input',
+            args_names='repeat',
+            default_value=args['repeat'],
+            data_type=int
+        )
+    )
 
-	def exit_with_save_config():
-	MBCIConfigManager().save(args)
-	sys.exit()
+    def exit_with_save_config():
+        MBCIConfigManager().save(args)
+        sys.exit()
 
-	SettingMenu.add_item(MenuAction('Back', SettingMenu.close))
-	MainMenu.add_item(MenuAction('Settings', SettingMenu))
-	MainMenu.add_item(MenuAction('Start', MainMenu.close))
-	MainMenu.add_item(MenuAction('Exit', exit_with_save_config))
-	MainMenu.view()
-
+    SettingMenu.add_item(MenuAction('Back', SettingMenu.close))
+    MainMenu.add_item(MenuAction('Settings', SettingMenu))
+    MainMenu.add_item(MenuAction('Start', MainMenu.close))
+    MainMenu.add_item(MenuAction('Exit', exit_with_save_config))
+    MainMenu.view()
 def parse_argv(sys_argv=None):
 	if '--return-exit-code' not in sys.argv and not SILENT_MODE and sys_argv is None:
 	print(LOGO)
