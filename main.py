@@ -5,6 +5,21 @@ from vk_api.upload import VkUpload
 
 I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')) else False)
 PATH_TO_SELF = sys.executable if I_AM_EXECUTABLE else __file__
+CONFIG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('eset-keygen-config.json')
+LOG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('ESET-KeyGen.log')
+SILENT_MODE = '--silent' in sys.argv
+MBCI_MODE = len(sys.argv) == 1
+
+def enable_logging():
+    logging.basicConfig(
+        level=logging.INFO,
+        filemode='w',
+        filename=LOG_PATH,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
+
+if ('--disable-logging' not in sys.argv and not MBCI_MODE) or ('--disable-logging' in sys.argv and SILENT_MODE): # Here it is present to catch an error when parsing arguments using argparse
+    enable_logging()
 
 from modules.EmailAPIs import *
 
@@ -66,7 +81,10 @@ args = {
     'no_logo': False,
     'disable_progress_bar': False,
     'disable_output_file': False,
-    'repeat': 1
+    'repeat': 1,
+
+    'silent': False,
+    'disable_logging': False
 }
 # -----------------------------------------------------------------------------------------------
 
@@ -205,6 +223,8 @@ def RunMenu():
     MainMenu.view()
 
 def parse_argv():
+    if '--return-exit-code' not in sys.argv and not SILENT_MODE and sys_argv is None:
+        print(LOGO)
     if '--return-exit-code' not in sys.argv:
         print(LOGO)
     if len(sys.argv) == 1: # for MBCI mode
@@ -251,6 +271,10 @@ def parse_argv():
         args_parser.add_argument('--vktoken', type=str, default='', help='VK API Token for posting to group')
         args_parser.add_argument('--vktoken2', type=str, default='', help='VK API Token for posting to group')
         args_parser.add_argument('--vkgroupid', type=str, default='', help='VK Group ID (with minus sign)')
+        # Logging
+        args_logging = args_parser.add_mutually_exclusive_group()
+        args_logging.add_argument('--silent', action='store_true', help='Disables message output, output called by the --custom-email-api argument will still be output!')
+        args_logging.add_argument('--disable-logging', action='store_true', help='Disables logging')
         try:
             global args
             args = vars(args_parser.parse_args())
