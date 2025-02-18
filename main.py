@@ -5,21 +5,6 @@ from vk_api.upload import VkUpload
 
 I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')) else False)
 PATH_TO_SELF = sys.executable if I_AM_EXECUTABLE else __file__
-CONFIG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('eset-keygen-config.json')
-LOG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('ESET-KeyGen.log')
-SILENT_MODE = '--silent' in sys.argv
-MBCI_MODE = len(sys.argv) == 1
-
-def enable_logging():
-    logging.basicConfig(
-        level=logging.INFO,
-        filemode='w',
-        filename=LOG_PATH,
-        format='%(asctime)s - %(levelname)s - %(message)s'
-    )
-
-if ('--disable-logging' not in sys.argv and not MBCI_MODE) or ('--disable-logging' in sys.argv and SILENT_MODE): # Here it is present to catch an error when parsing arguments using argparse
-    enable_logging()
 
 from modules.EmailAPIs import *
 
