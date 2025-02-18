@@ -16,7 +16,7 @@ import telebot
 import vk_api
 from vk_api.upload import VkUpload
 
-I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS') else False)
+I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')) else False)
 PATH_TO_SELF = sys.executable if I_AM_EXECUTABLE else __file__
 CONFIG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('eset-keygen-config.json')
 LOG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('ESET-KeyGen.log')
