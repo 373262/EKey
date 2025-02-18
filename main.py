@@ -20,7 +20,7 @@ I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEI
 PATH_TO_SELF = sys.executable if I_AM_EXECUTABLE else __file__
 CONFIG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('eset-keygen-config.json')
 LOG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('ESET-KeyGen.log')
-SILENT_MODE = '--silent' in sys.argv
+SILENT_MODE = False
 MBCI_MODE = len(sys.argv) == 1
 
 def enable_logging():
