@@ -335,6 +335,7 @@ def parse_argv(sys_argv=None):
         args_parser.add_argument('--vkgroupid', type=str, default='', help='VK Group ID (with minus sign)')
         # Logging
         args_logging = args_parser.add_mutually_exclusive_group()
+        args_logging.add_argument('--silent', action='store_true', help='Disables message output, output called by the --custom-email-api argument will still be output!')
         args_logging.add_argument('--disable-logging', action='store_true', help='Disables logging')
 
         parsed_args = None
