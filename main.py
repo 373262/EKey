@@ -16,11 +16,10 @@ import telebot
 import vk_api
 from vk_api.upload import VkUpload
 
-I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')) else False)
+I_AM_EXECUTABLE = (True if (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS') else False)
 PATH_TO_SELF = sys.executable if I_AM_EXECUTABLE else __file__
 CONFIG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('eset-keygen-config.json')
 LOG_PATH = pathlib.Path(PATH_TO_SELF).parent.resolve().joinpath('ESET-KeyGen.log')
-SILENT_MODE = False
 MBCI_MODE = len(sys.argv) == 1
 
 def enable_logging():
@@ -31,7 +30,7 @@ def enable_logging():
         format='%(asctime)s - %(levelname)s - %(message)s'
     )
 
-if ('--disable-logging' not in sys.argv and not MBCI_MODE) or ('--disable-logging' in sys.argv and SILENT_MODE):
+if '--disable-logging' not in sys.argv and not MBCI_MODE:
     enable_logging()
 
 from modules.EmailAPIs import *
@@ -95,7 +94,6 @@ args = {
     'disable_output_file': False,
     'repeat': 1,
     
-    'silent': False,
     'disable_logging': False
 }
 
@@ -289,7 +287,7 @@ def RunMenu():
     MainMenu.view()
     
 def parse_argv(sys_argv=None):
-    if '--return-exit-code' not in sys.argv and not SILENT_MODE and sys_argv is None:
+    if '--return-exit-code' not in sys.argv and sys_argv is None:
         print(LOGO)
     if MBCI_MODE and sys_argv is None: # for MBCI mode
         RunMenu()
@@ -337,7 +335,6 @@ def parse_argv(sys_argv=None):
         args_parser.add_argument('--vkgroupid', type=str, default='', help='VK Group ID (with minus sign)')
         # Logging
         args_logging = args_parser.add_mutually_exclusive_group()
-        args_logging.add_argument('--silent', action='store_true', help='Disables message output, output called by the --custom-email-api argument will still be output!')
         args_logging.add_argument('--disable-logging', action='store_true', help='Disables logging')
 
         parsed_args = None
@@ -353,13 +350,13 @@ def parse_argv(sys_argv=None):
                 if captured_stderr != '':
                     if sys_argv is None:
                         logging.error(captured_stderr)
-                        console_log(captured_stderr, silent_mode=SILENT_MODE)
+                        console_log(captured_stderr)
                 if sys_argv is None:
                     exit_program(-1)
         return parsed_args
 
 def exit_program(exit_code):
-    if MBCI_MODE and not SILENT_MODE:
+    if MBCI_MODE:
         input('\nPress Enter to exit...')
     sys.exit(exit_code)
 
@@ -385,50 +382,49 @@ def main(disable_exit=False):
         # check program updates
         elif args['update']:
             logging.info('-- Updater --')
-            console_log(f'{Fore.LIGHTMAGENTA_EX}-- Updater --{Fore.RESET}\n', silent_mode=SILENT_MODE)
+            console_log(f'{Fore.LIGHTMAGENTA_EX}-- Updater --{Fore.RESET}\n')
             update()
         elif args['reset_eset_vpn']:
             logging.info('-- Reset ESET VPN --')
-            console_log(f'{Fore.LIGHTMAGENTA_EX}-- Reset ESET VPN --{Fore.RESET}\n', silent_mode=SILENT_MODE)
+            console_log(f'{Fore.LIGHTMAGENTA_EX}-- Reset ESET VPN --{Fore.RESET}\n')
             if sys.platform.startswith('win'):
                 EVRW()
             elif sys.platform == "darwin":
                 EVRM()
             else:
                 logging.error('This feature is for Windows and macOS only!!!')
-                console_log('This feature is for Windows and macOS only!!!', ERROR, silent_mode=SILENT_MODE)
+                console_log('This feature is for Windows and macOS only!!!', ERROR)
                 exit_program(-2)
         elif args['install']:
             logging.info('-- Installer --')
-            console_log(f'{Fore.LIGHTMAGENTA_EX}-- Installer --{Fore.RESET}\n', silent_mode=SILENT_MODE)
+            console_log(f'{Fore.LIGHTMAGENTA_EX}-- Installer --{Fore.RESET}\n')
             Installer().install()
             exit_program(0)
         if not args['skip_update_check'] and not args['update']:
             try:
                 logging.info('-- Updater --')
-                console_log(f'{Fore.LIGHTMAGENTA_EX}-- Updater --{Fore.RESET}\n', silent_mode=SILENT_MODE)
+                console_log(f'{Fore.LIGHTMAGENTA_EX}-- Updater --{Fore.RESET}\n')
                 updater = Updater()
                 latest_cloud_version = list(updater.get_releases().keys())[0]
                 latest_cloud_version_int = latest_cloud_version[1:].split('.')
                 latest_cloud_version_int = int(''.join(latest_cloud_version_int[:-1])+latest_cloud_version_int[-1][0])
                 if VERSION[1] > latest_cloud_version_int:
                     logging.warning(f'The project has an unreleased version, maybe you are using a build from the developer?')
-                    console_log(f'The project has an unreleased version, maybe you are using a build from the developer?\n', WARN, True, SILENT_MODE)
+                    console_log(f'The project has an unreleased version, maybe you are using a build from the developer?\n', WARN)
                 elif latest_cloud_version_int > VERSION[1]:
                     logging.info(f'Project update is available up to version: {latest_cloud_version}')
-                    if not SILENT_MODE:
-                        console_log(f'Project update is available up to version: {colorama.Fore.GREEN}{latest_cloud_version}{colorama.Fore.RESET}', WARN)
-                        update_now = input(f'[  {colorama.Fore.YELLOW}INPT{colorama.Fore.RESET}  ] {colorama.Fore.CYAN}Do you want to update right now? (y/n): {colorama.Fore.RESET}').strip().lower()
-                        if update_now == 'y':
-                            update()
-                        else:
-                            console_log(f'The update has been ignored\n', INFO)
+                    console_log(f'Project update is available up to version: {colorama.Fore.GREEN}{latest_cloud_version}{colorama.Fore.RESET}', WARN)
+                    update_now = input(f'[  {colorama.Fore.YELLOW}INPT{colorama.Fore.RESET}  ] {colorama.Fore.CYAN}Do you want to update right now? (y/n): {colorama.Fore.RESET}').strip().lower()
+                    if update_now == 'y':
+                        update()
+                    else:
+                        console_log(f'The update has been ignored\n', INFO)
                 else:
                     logging.info('Project up to date!!!')
-                    console_log('Project up to date!!!\n', OK, silent_mode=SILENT_MODE)
+                    console_log('Project up to date!!!\n', OK)
             except Exception as e:
                 logging.error("EXC_INFO:", exc_info=True)
-                #console_log(e, ERROR, silent_mode=SILENT_MODE)
+                #console_log(e, ERROR)
         
         # initialization and configuration of everything necessary for work
         please_comment = "Активировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬"
@@ -466,10 +462,10 @@ def main(disable_exit=False):
 
         # main part of the program
         logging.info(f'-- KeyGen --')
-        console_log(f'\n{Fore.LIGHTMAGENTA_EX}-- KeyGen --{Fore.RESET}\n', silent_mode=SILENT_MODE)
+        console_log(f'\n{Fore.LIGHTMAGENTA_EX}-- KeyGen --{Fore.RESET}\n')
         if not args['custom_email_api']:
             logging.info(f'[{args["email_api"]}] Mail registration...')
-            console_log(f'[{args["email_api"]}] Mail registration...', INFO, silent_mode=SILENT_MODE)
+            console_log(f'[{args["email_api"]}] Mail registration...', INFO)
             if args['email_api'] in WEB_WRAPPER_EMAIL_APIS: # WebWrapper API, need to pass the selenium object to the class initialization
                 email_obj = EMAIL_API_CLASSES[args['email_api']](driver)
             else: # real APIs without the need for a browser
@@ -478,12 +474,12 @@ def main(disable_exit=False):
                 email_obj.init()
                 if email_obj.email is not None:
                     logging.info('Mail registration completed successfully!')
-                    console_log('Mail registration completed successfully!', OK, silent_mode=SILENT_MODE)
+                    console_log('Mail registration completed successfully!', OK)
             except:
                 pass
             if email_obj.email is None:
                 logging.critical('Mail registration was not completed, try using a different Email API!')
-                console_log('Mail registration was not completed, try using a different Email API!\n', ERROR, silent_mode=SILENT_MODE)
+                console_log('Mail registration was not completed, try using a different Email API!\n', ERROR)
         else:
             email_obj = CustomEmailAPI()
             while True:
@@ -641,7 +637,7 @@ def main(disable_exit=False):
                         vk2.wall.post(owner_id=-229183047, message=output_line_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=604800)
             # end
             logging.info(output_line)
-            console_log(output_line, silent_mode=SILENT_MODE)
+            console_log(output_line)
             if not args['disable_output_file']:
                 date = datetime.datetime.now()
                 f = open(f"{str(date.day)}.{str(date.month)}.{str(date.year)} - "+output_filename, 'a')
@@ -649,18 +645,15 @@ def main(disable_exit=False):
                 f.close()
             
             if l_key is not None and args['advanced_key'] and obtained_from_site:
-                if not SILENT_MODE:
-                    unbind_key = input(f'[  {colorama.Fore.YELLOW}INPT{colorama.Fore.RESET}  ] {colorama.Fore.CYAN}Do you want to unbind the key from this account? (y/n): {colorama.Fore.RESET}').strip().lower()
-                    if unbind_key == 'y':
-                        EPHK_obj.removeLicense()
-                else:
+                unbind_key = input(f'[  {colorama.Fore.YELLOW}INPT{colorama.Fore.RESET}  ] {colorama.Fore.CYAN}Do you want to unbind the key from this account? (y/n): {colorama.Fore.RESET}').strip().lower()
+                if unbind_key == 'y':
                     EPHK_obj.removeLicense()
     except Exception as E:
         logging.critical("EXC_INFO:", exc_info=True)
         traceback_string = traceback.format_exc()
         if str(type(E)).find('selenium') and traceback_string.find('Stacktrace:') != -1: # disabling stacktrace output
             traceback_string = traceback_string.split('Stacktrace:', 1)[0]
-        console_log(traceback_string, ERROR, silent_mode=SILENT_MODE)
+        console_log(traceback_string, ERROR)
 
     if globals().get('driver', None) is not None:
         driver.quit()
@@ -714,7 +707,7 @@ if __name__ == '__main__':
         for i in range(args['repeat']):
             try:
                 logging.info(f'------------ Initializing of {i+1} start ------------')
-                console_log(f'\n{Fore.MAGENTA}------------ Initializing of {Fore.YELLOW}{i+1} {Fore.MAGENTA}start ------------{Fore.RESET}\n', silent_mode=SILENT_MODE)
+                console_log(f'\n{Fore.MAGENTA}------------ Initializing of {Fore.YELLOW}{i+1} {Fore.MAGENTA}start ------------{Fore.RESET}\n')
                 if i == 0: # the first run sets up the environment for subsequent runs, speeding them up
                     main(disable_exit=True)
                     args['skip_update_check'] = True
