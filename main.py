@@ -538,19 +538,19 @@ def main(disable_exit=False):
                         activate_products = '\n🔓 Ключ подходит для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
                         activate_products_vk = '\n🔓 Ключ подходит для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
-                        hashtags_vk = '\n\n\#ESET \#NOD32 \#ESS \#ESSP \#HomeSecurity \#SmartSecurity \#keys \#license \#НОД32 \#ключ \#активация \#халява'
+                        hashtags_vk = '\n\n#ESET #NOD32 #ESS #ESSP #HomeSecurity #SmartSecurity #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239282'
                     if args['small_business_key']:
                         activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                         activate_products_vk = '\n🔓 Ключ подходит для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
-                        hashtags_vk = '\n\n\#ESET \#NOD32 \#ESBS \#SmallBusiness \#keys \#license \#НОД32 \#ключ \#активация \#халява'
+                        hashtags_vk = '\n\n#ESET #NOD32 #ESBS #SmallBusiness #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
                     if args['vpn_codes']:
                         activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                         activate_products_vk = '\n🔓 Ключ подходит для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
-                        hashtags_vk = '\n\n\#ESET \#NOD32 \#ESBS \#SmallBusiness \#keys \#license \#НОД32 \#ключ \#активация \#халява'
+                        hashtags_vk = '\n\n#ESET #NOD32 #ESBS #SmallBusiness #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
                     bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     bot.send_message(-1001233475775, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)  
@@ -578,7 +578,7 @@ def main(disable_exit=False):
                             ''
                             ])
                             hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license \\#впн \\#прокси'
-                            hashtags_vk = '\n\n\#ESET \#NOD32 \#VPN \#proxy \#keys \#license \#впн \#прокси \#НОД32 \#ключ \#активация \#халява'
+                            hashtags_vk = '\n\n#ESET #NOD32 #VPN #proxy #keys #license #впн #прокси #НОД32 #ключ #активация #халява'
                             photo_attachment = 'photo-203143822_457239280'
                             license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             license_keys_formatted_vk = "".join([f"🔐 Ключ активации: {key}\n" for key in vpn_codes_line.split(', ')])
@@ -629,13 +629,13 @@ def main(disable_exit=False):
                         activate_products = '\n🔓 Ключ подходит для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
                         activate_products_vk = '\n🔓 Ключ подходит для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
                         hashtags = '\n\n\#ESET \\#NOD32 \\#НОД32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
-                        hashtags_vk = '\n\n\#ESET \#NOD32 \#ESS \#ESSP \#HomeSecurity \#SmartSecurity \#keys \#license \#НОД32 \#ключ \#активация \#халява'
+                        hashtags_vk = '\n\n#ESET #NOD32 #ESS #ESSP #HomeSecurity #SmartSecurity #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239282'
                     if args['small_business_key']:
                         activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                         activate_products_vk = '\n🔓 Ключ подходит для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
                         hashtags = '\n\n\\#ESET \\#НОД32 \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
-                        hashtags_vk = '\n\n\#ESET \#НОД32 \#NOD32 \#ESBS \#SmallBusiness \#keys \#license \#ключ \#активация \#халява'
+                        hashtags_vk = '\n\n#ESET #НОД32 #NOD32 #ESBS #SmallBusiness #keys #license #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
                         bot.send_message(-1002475137672, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                         bot.send_message(-1001233475775, output_line +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
