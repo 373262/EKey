@@ -551,9 +551,9 @@ def main(disable_exit=False):
                         photo_attachment = 'photo-203143822_457239283'
                     bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     bot.send_message(-1001233475775, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)  
-                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end , attachments=photo_attachment, donut_paid_duration=604800)
-                    #vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end , attachments=photo_attachment)
-                    vk2.wall.post(owner_id=-229183047, message=output_line_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=604800)
+                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end + "\n\n" + hashtags, attachments=photo_attachment, donut_paid_duration=604800)
+                    #vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end + "\n\n" + hashtags, attachments=photo_attachment)
+                    vk2.wall.post(owner_id=-229183047, message=output_line_vk + "\n\n" + vk_end + "\n\n" + hashtags, attachments=photo_attachment, donut_paid_duration=604800)
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
@@ -574,7 +574,7 @@ def main(disable_exit=False):
                             '-------------------------------------------------',
                             ''
                             ])
-                            hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license'
+                            hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license \\#впн \\#прокси'
                             photo_attachment = 'photo-203143822_457239280'
                             license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             license_keys_formatted_vk = "".join([f"🔐 Ключ активации: {key}\n" for key in vpn_codes_line.split(', ')])
@@ -582,9 +582,9 @@ def main(disable_exit=False):
                             output_line_vk = f'\n🛡 Продукт: ESET VPN\n🕐 Срок действия: {l_out_date}\n\n{license_keys_formatted_vk}\n'
                             bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                             bot.send_message(-1001233475775, output_line + please_comment +"\n\n[⚡️Накидать бустов\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
-                            vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end , attachments=photo_attachment, donut_paid_duration=604800)
-                            #vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end , attachments=photo_attachment)
-                            vk2.wall.post(owner_id=-229183047, message=output_line_vk + "\n\n" + vk_end, attachments=photo_attachment, donut_paid_duration=604800)
+                            vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end + "\n\n" + hashtags, attachments=photo_attachment, donut_paid_duration=604800)
+                            #vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n" + vk_end + "\n\n" + hashtags, attachments=photo_attachment)
+                            vk2.wall.post(owner_id=-229183047, message=output_line_vk + "\n\n" + vk_end + "\n\n" + hashtags, attachments=photo_attachment, donut_paid_duration=604800)
 
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
