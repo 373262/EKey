@@ -1,3 +1,5 @@
+[Personal keys for ESET NOD32](https://pogrommist.ru/free-nod32-keys/)
+
 # ESET-KeyGen
 ESET-KeyGen - Trial-Key & Account generator for ESET Products (last test was on 14.12.2024 at 15:19 UTC+3)
 
