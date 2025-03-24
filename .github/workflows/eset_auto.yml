@@ -50,8 +50,8 @@ jobs:
       - name: Generate key
         run: |
           ACCOUNT=0
-          KEY=5
-          MAIL=fakemail
+          KEY=2
+          MAIL=mailticking
           KEY_TYPE=--key
 
           git clone https://github.com/pogrommistru/EKey.git
