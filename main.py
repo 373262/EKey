@@ -36,7 +36,7 @@ if '--disable-logging' not in sys.argv and not MBCI_MODE:
 from modules.EmailAPIs import *
 
 # ---- Quick settings [for Developers to quickly change behavior without changing all files] ----
-VERSION = ['v1.5.4.2', 1542]
+VERSION = ['v1.5.4.5', 1542]
 LOGO = f"""
 ███████╗███████╗███████╗████████╗   ██╗  ██╗███████╗██╗   ██╗ ██████╗ ███████╗███╗   ██╗
 ██╔════╝██╔════╝██╔════╝╚══██╔══╝   ██║ ██╔╝██╔════╝╚██╗ ██╔╝██╔════╝ ██╔════╝████╗  ██║
@@ -453,7 +453,7 @@ def main(disable_exit=False):
                 webdriver_installer = WebDriverInstaller(browser_name, args['custom_browser_location'])
             else:
                 webdriver_installer = WebDriverInstaller(browser_name)
-            webdriver_path, args['custom_browser_location'] = webdriver_installer.menu(args['disable_progress_bar'])
+            webdriver_path, custom_browser_location = webdriver_installer.menu(args['disable_progress_bar'])
         if not args['only_webdriver_update']:
             driver = initSeleniumWebDriver(browser_name, webdriver_path, args['custom_browser_location'], (not args['no_headless']))
             if driver is None:
