@@ -533,7 +533,7 @@ def main(disable_exit=False):
                     ''
                     ])
                     output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ активации: `{l_key}`'
-                    output_line_vk = f'\n🛡 Продукт: {l_name}\n🕐 Срок действия: {l_out_date}\n🔐 Ключ активации: {l_key}'
+                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ активации: {l_key}'
                     if args['key']:
                         activate_products = '\n🔓 Ключ подходит для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
                         activate_products_vk = '\n🔓 Ключ подходит для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
@@ -583,7 +583,7 @@ def main(disable_exit=False):
                             license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             license_keys_formatted_vk = "".join([f"🔐 Ключ активации: {key}\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{l_out_date}*\n\n{license_keys_formatted}\n'
-                            output_line_vk = f'\n🛡 Продукт: ESET VPN\n🕐 Срок действия: {l_out_date}\n\n{license_keys_formatted_vk}\n'
+                            output_line_vk = f'\n🛡 Продукт: ESET VPN\n\n🕐 Срок действия: {l_out_date}\n\n{license_keys_formatted_vk}\n'
                             bot.send_message(-1002475137672, output_line + please_comment +"\n\n[⚡️Проголосовать за группу\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                             #bot.send_message(-1001233475775, output_line + please_comment +"\n\n[⚡️Проголосовать за группу\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)" + hashtags, disable_web_page_preview=True, disable_notification=True)
                             #vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + "\n\n", attachments=photo_attachment, donut_paid_duration=604800)
@@ -624,7 +624,7 @@ def main(disable_exit=False):
                             ''
                         ])
                     output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ активации: `{l_key}`'
-                    output_line_vk = f'\n🛡 Продукт: {l_name}\n🕐 Срок действия: {l_out_date}\n🔐 Ключ активации: {l_key}'
+                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ активации: {l_key}\n'
                     if args['key']:
                         activate_products = '\n🔓 Ключ подходит для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
                         activate_products_vk = '\n🔓 Ключ подходит для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
