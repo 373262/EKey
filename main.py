@@ -428,7 +428,7 @@ def main(disable_exit=False):
                 #console_log(e, ERROR)
         
         # initialization and configuration of everything necessary for work
-        please_comment = "Активировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить \- vk.cc/cHjcEr"
+        please_comment = "Активировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить \- vk\.cc/cHjcEr"
         token_value = args['token']
         bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         vk_token_value = args['vktoken']
