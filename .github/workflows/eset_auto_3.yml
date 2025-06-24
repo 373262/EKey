@@ -1,8 +1,8 @@
 name: Generator Auto VPN
 
 on:
-  schedule:
-    - cron: "0 */1 * * *"
+  # schedule:
+    # - cron: "0 */1 * * *"
   workflow_dispatch:
     inputs:
       account:
