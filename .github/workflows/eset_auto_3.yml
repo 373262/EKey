@@ -1,8 +1,8 @@
 name: Generator Auto VPN
 
 on:
-  # schedule:
-    # - cron: "0 */1 * * *"
+  schedule:
+    - cron: "0 */2 * * *"
   workflow_dispatch:
     inputs:
       account:
@@ -52,7 +52,7 @@ jobs:
           ACCOUNT=0
           KEY=2
           MAIL=fakemail
-          KEY_TYPE=--vpn-codes
+          KEY_TYPE=--small-business-key
 
           git clone https://github.com/pogrommistru/EKey.git
           cd EKey
