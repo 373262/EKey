@@ -50,7 +50,7 @@ jobs:
       - name: Generate key
         run: |
           ACCOUNT=0
-          KEY=1
+          KEY=2
           MAIL=fakemail
           KEY_TYPE=--key
 
