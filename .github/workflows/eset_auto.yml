@@ -51,7 +51,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=fakemail
+          MAIL=mailticking
           KEY_TYPE=--key
 
           git clone https://github.com/373262/EKey.git
