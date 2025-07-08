@@ -378,7 +378,7 @@ def main(disable_exit=False):
             elif args['advanced_key'] or args['protecthub_account']:
                 args['no_headless'] = True
             if not args['custom_email_api']:
-                if args['email_api'] not in ['mailticking', 'fakemail', 'inboxes', 'incognitomail']:
+                if args['email_api'] not in ['mailticking', 'fakemail', 'inboxes', 'incognitomail', 'guerrillamail']:
                     raise RuntimeError('--advanced-key, --protecthub-account works ONLY if you use the --custom-email-api argument or the following Email APIs: mailticking, fakemail, inboxes!!!')
         # check program updates
         elif args['update']:
