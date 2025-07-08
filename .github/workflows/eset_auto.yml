@@ -54,7 +54,7 @@ jobs:
           MAIL=fakemail
           KEY_TYPE=--key
 
-          git clone https://github.com/pogrommistru/EKey.git
+          git clone https://github.com/373262/EKey.git
           cd EKey
           
           # Setup env
