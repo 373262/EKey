@@ -49,7 +49,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=guerrillamail
+          MAIL=mailticking
           KEY_TYPE=--small-business-key
 
           git clone https://github.com/373262/EKey.git
