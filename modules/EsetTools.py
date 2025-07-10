@@ -63,10 +63,10 @@ class EsetRegister(object):
         
         # Select Ukraine country
         logging.info('Selecting the country...')
-        if exec_js(f"return {GET_EBCN}('select__single-value css-1dimb5e-singleValue')[0]").text != 'Ukraine':
+        if exec_js(f"return {GET_EBCN}('select__single-value css-1dimb5e-singleValue')[0]").text != 'Mali':
             exec_js(f"return {GET_EBCN}('select__control css-13cymwt-control')[0]").click()
             for country in exec_js(f"return {GET_EBCN}('select__option css-uhiml7-option')"):
-                if country.text == 'Ukraine':
+                if country.text == 'Mali':
                     country.click()
                     logging.info('Country selected!')
                     break
