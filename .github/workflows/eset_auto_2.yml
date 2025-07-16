@@ -51,7 +51,7 @@ on:
         default: main
 jobs:
   generate-account-and-key:
-    runs-on: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.os || 'windows-latest' }} #if fallback then
+    runs-on: macos-latest
     steps:
       - name: Generate key
         run: |
