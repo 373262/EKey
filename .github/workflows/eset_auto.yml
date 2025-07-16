@@ -35,17 +35,25 @@ on:
         - --vpn-codes
         default: --key
       os:
-        description: 'Operating System of runner'
+        description: 'Operating System of runner (Linux, macOS, Windows)'
         required: true
         type: choice
         options:
-        - macOS
-        - Linux
-        - Windows
-        default: Linux
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        default: windows-latest
+      branch:
+        description: "Repository branch (don't touch it if you don't know what it is!!!)"
+        required: false
+        type: choice
+        options:
+          - main
+          - test
+        default: main
 jobs:
-  Linux:
-    runs-on: ubuntu-latest
+  generate-account-and-key:
+    runs-on: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.os || 'windows-latest' }} #if fallback then
     steps:
       - name: Generate key
         run: |
