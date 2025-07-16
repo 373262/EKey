@@ -1,69 +1,25 @@
 name: Generator Auto Business
 
 on:
-  workflow_dispatch:
-    inputs:
-      account:
-        description: 'Number of Accounts to be generated (default = 0)'
-        required: false
-        default: '0'
-      key:
-        description: 'Number of Keys to be generated (default = 1)'
-        required: false
-        default: '1'
-      mail:
-        description: 'Choose the mail provider to generate license'
-        required: true
-        type: choice
-        options:
-        - 1secmail
-        - guerrillamail
-        - developermail
-        - mailticking
-        - fakemail
-        - inboxes
-        default: developermail
-      key_type:
-        description: 'Modes of operation'
-        required: true
-        type: choice
-        options:
-        - --key
-        - --small-business-key
-        - --vpn-codes
-        default: --key
-      os:
-        description: 'Operating System of runner (Linux, macOS, Windows)'
-        required: true
-        type: choice
-        options:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
-        default: windows-latest
-      branch:
-        description: "Repository branch (don't touch it if you don't know what it is!!!)"
-        required: false
-        type: choice
-        options:
-          - main
-          - test
-        default: main
+  schedule:
+    - cron: "0 */2 * * *"  # Runs every hour
+  workflow_dispatch:  # Optional: keep for manual testing
+
 jobs:
-  generate-account-and-key:
-    runs-on: macos-latest
+  Linux:
+    runs-on: ubuntu-latest
     steps:
-      - name: Generate key
+      - name: Generate key on Linux
         run: |
           ACCOUNT=0
           KEY=2
           MAIL=emailfake
           KEY_TYPE=--small-business-key
+          BRANCH=main
 
-          git clone https://github.com/373262/EKey.git
+          git clone -b ${BRANCH} https://github.com/373262/EKey.git
           cd EKey
-          
-          # Setup env
+
           sudo apt update
           sudo apt install -y python3-pip python3-venv
           python3 -m venv venv
@@ -71,18 +27,56 @@ jobs:
           pip install -r requirements.txt
 
           if [[ ${ACCOUNT} -ne 0 && ${KEY} -ne 0 ]]; then
-            seq 1 ${ACCOUNT} | xargs -I {} -P ${ACCOUNT} python3 main.py --chrome --account --email-api ${MAIL} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar &
-            seq 1 ${KEY} | xargs -I {} -P ${KEY} python3 main.py --chrome ${KEY_TYPE} --email-api ${MAIL} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
+            seq 1 ${ACCOUNT} | xargs -I {} -P ${ACCOUNT} python3 main.py --silent --chrome --account --email-api ${MAIL} --vktoken ${{ secrets.VKTOKEN }} --vktoken2 ${{ secrets.VKTOKEN2 }} --vkgroupid ${{ secrets.VKGROUPID }} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar &
+            seq 1 ${KEY} | xargs -I {} -P ${KEY} python3 main.py --chrome --key --email-api ${MAIL} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
             wait
             echo "Account:" >> $GITHUB_STEP_SUMMARY
             cat ./*ACCOUNTS.txt >> $GITHUB_STEP_SUMMARY
             echo -e "\nKey:" >> $GITHUB_STEP_SUMMARY
             cat ./*KEYS.txt >> $GITHUB_STEP_SUMMARY
           elif [[ ${ACCOUNT} -ne 0 ]]; then
-            seq 1 ${ACCOUNT} | xargs -I {} -P ${ACCOUNT} python3 main.py --chrome --account --email-api ${MAIL} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
+            seq 1 ${ACCOUNT} | xargs -I {} -P ${ACCOUNT} python3 main.py --silent --chrome --account --email-api ${MAIL} --vktoken ${{ secrets.VKTOKEN }} --vktoken2 ${{ secrets.VKTOKEN2 }} --vkgroupid ${{ secrets.VKGROUPID }} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
             echo -e "\nAccount:" >> $GITHUB_STEP_SUMMARY
             cat ./*ACCOUNTS.txt >> $GITHUB_STEP_SUMMARY
           elif [[ ${KEY} -ne 0 ]]; then
-            seq 1 ${KEY} | xargs -I {} -P ${KEY} python3 main.py --chrome ${KEY_TYPE} --email-api ${MAIL} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
+            seq 1 ${KEY} | xargs -I {} -P ${KEY} python3 main.py --silent --chrome --key --email-api ${MAIL} --vktoken ${{ secrets.VKTOKEN }} --vktoken2 ${{ secrets.VKTOKEN2 }} --vkgroupid ${{ secrets.VKGROUPID }} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
             echo -e "\nKey:" >> $GITHUB_STEP_SUMMARY
+            cat ./*KEYS.txt >> $GITHUB_STEP_SUMMARY
+          fi
+
+  macOS:
+    runs-on: macos-latest
+    steps:
+      - name: Generate key on macOS
+        run: |
+          ACCOUNT=0
+          KEY=2
+          MAIL=emailfake
+          KEY_TYPE=--small-business-key
+          BRANCH=main
+
+          git clone -b ${BRANCH} https://github.com/373262/EKey.git
+          cd EKey
+
+          brew install python
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+          if [[ ${ACCOUNT} -ne 0 && ${KEY} -ne 0 ]]; then
+            seq 1 ${ACCOUNT} | xargs -I {} -P ${ACCOUNT} python3 main.py --silent --chrome --account --email-api ${MAIL} --vktoken ${{ secrets.VKTOKEN }} --vktoken2 ${{ secrets.VKTOKEN2 }} --vkgroupid ${{ secrets.VKGROUPID }} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar &
+            seq 1 ${KEY} | xargs -I {} -P ${KEY} python3 main.py --chrome --key --email-api ${MAIL} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
+            wait
+            echo "Account:" >> $GITHUB_STEP_SUMMARY
+            cat ./*ACCOUNTS.txt >> $GITHUB_STEP_SUMMARY
+            echo -e "\nKey:" >> $GITHUB_STEP_SUMMARY
+            cat ./*KEYS.txt >> $GITHUB_STEP_SUMMARY
+          elif [[ ${ACCOUNT} -ne 0 ]]; then
+            seq 1 ${ACCOUNT} | xargs -I {} -P ${ACCOUNT} python3 main.py --silent --chrome --account --email-api ${MAIL} --vktoken ${{ secrets.VKTOKEN }} --vktoken2 ${{ secrets.VKTOKEN2 }} --vkgroupid ${{ secrets.VKGROUPID }} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
+            echo -e "\nAccount:" >> $GITHUB_STEP_SUMMARY
+            cat ./*ACCOUNTS.txt >> $GITHUB_STEP_SUMMARY
+          elif [[ ${KEY} -ne 0 ]]; then
+            seq 1 ${KEY} | xargs -I {} -P ${KEY} python3 main.py --silent --chrome --key --email-api ${MAIL} --vktoken ${{ secrets.VKTOKEN }} --vktoken2 ${{ secrets.VKTOKEN2 }} --vkgroupid ${{ secrets.VKGROUPID }} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar
+            echo -e "\nKey:" >> $GITHUB_STEP_SUMMARY
+            cat ./*KEYS.txt >> $GITHUB_STEP_SUMMARY
           fi
