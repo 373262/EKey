@@ -62,15 +62,27 @@ jobs:
           MAIL=emailfake
           KEY_TYPE=--key
 
-          git clone https://github.com/373262/EKey.git
-          cd EKey
-          
-          # Setup env
-          sudo apt update
-          sudo apt install -y python3-pip python3-venv
-          python3 -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
+          - name: Checkout Repository
+uses: actions/checkout@v4
+
+- name: Clone Repository
+run: git clone -b "${{ steps.vars.outputs.branch }}" https://github.com/rzc0d3r/ESET-KeyGen.git
+
+- name: Setup & Run Script (Linux/macOS)
+if: runner.os != 'Windows'
+shell: bash
+run: |
+cd ESET-KeyGen
+if [[ "$RUNNER_OS" == "macOS" ]]; then
+brew install python@3.11 || true
+else
+sudo apt update
+sudo apt install -y python3-pip python3-venv
+fi
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
           if [[ ${ACCOUNT} -ne 0 && ${KEY} -ne 0 ]]; then
             seq 1 ${ACCOUNT} | xargs -I {} -P ${ACCOUNT} python3 main.py --silent --chrome --account --email-api ${MAIL} --vktoken ${{ secrets.VKTOKEN }} --vktoken2 ${{ secrets.VKTOKEN2 }} --vkgroupid ${{ secrets.VKGROUPID }} --token ${{ secrets.TOKEN }} --skip-webdriver-menu --skip-update-check --no-logo --disable-progress-bar &
