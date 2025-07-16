@@ -61,18 +61,15 @@ jobs:
           KEY=2
           MAIL=emailfake
           KEY_TYPE=--key
+          BRANCH=main
 
-          - name: Checkout Repository
-          uses: actions/checkout@v4
-
-          - name: Clone Repository
-          run: git clone -b "${{ steps.vars.outputs.branch }}" https://github.com/373262/EKey.git
+          git clone -b ${BRANCH} https://github.com/373262/EKey.git
           
           - name: Setup & Run Script (Linux/macOS)
           if: runner.os != 'Windows'
           shell: bash
           run: |
-          cd ESET-KeyGen
+          cd EKey
           if [[ "$RUNNER_OS" == "macOS" ]]; then
           brew install python@3.11 || true
           else
