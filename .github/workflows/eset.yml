@@ -55,8 +55,8 @@ jobs:
           MAIL=${{ github.event.inputs.mail }}
           KEY_TYPE=${{ github.event.inputs.key_type }}
 
-          git clone https://github.com/rzc0d3r/ESET-KeyGen.git
-          cd ESET-KeyGen
+          git clone https://github.com/373262/EKey.git
+          cd EKey
           
           # Setup env
           sudo apt update
@@ -92,8 +92,8 @@ jobs:
           MAIL=${{ github.event.inputs.mail }}
           KEY_TYPE=${{ github.event.inputs.key_type }}
 
-          git clone https://github.com/rzc0d3r/ESET-KeyGen.git
-          cd ESET-KeyGen
+          git clone https://github.com/373262/EKey.git
+          cd EKey
           
           # Setup env
           brew install python
