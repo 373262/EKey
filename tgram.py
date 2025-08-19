@@ -516,7 +516,7 @@ def main(disable_exit=False):
                 ])
                 output_filename = 'ESET ACCOUNTS.txt'
                 if args['key'] or args['small_business_key'] or args['vpn_codes']:
-                    output_filename = 'ESET KEYS.txt'
+                    output_filename = 'KEYS.txt'
                     EK_obj = EK(email_obj, driver, 'ESET HOME' if args['key'] else 'SMALL BUSINESS')
                     EK_obj.sendRequestForKey()
                     l_name, l_key, l_out_date = EK_obj.getLD()
@@ -546,7 +546,7 @@ def main(disable_exit=False):
                         activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         photo_attachment = 'photo-203143822_457239283'
-                    bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Отдать голос\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)\n\n" + "[🚀 *QPNet VPN*](https://t\.me/qpnetrubot\?start\=1936643) - ваш надежный проводник в безопасный интернет!" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                    bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Поддержать группу\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)\n\n" + "[🚀 *QPNet VPN*](https://t\.me/qpnetrubot\?start\=1936643) \- ваш надежный проводник в безопасный интернет\!" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
@@ -571,7 +571,7 @@ def main(disable_exit=False):
                             photo_attachment = 'photo-203143822_457239280'
                             license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{l_out_date}*\n\n{license_keys_formatted}\n'
-                            bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Отдать голос\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)\n\n" + "[🚀 *QPNet VPN*](https://t\.me/qpnetrubot\?start\=1936643) - ваш надежный проводник в безопасный интернет!" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                            bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Поддержать группу\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)\n\n" + "[🚀 *QPNet VPN*](https://t\.me/qpnetrubot\?start\=1936643) \- ваш надежный проводник в безопасный интернет\!" + hashtags, disable_web_page_preview=True, disable_notification=True)
 
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
@@ -587,9 +587,9 @@ def main(disable_exit=False):
                     '---------------------------------------------------------------------',
                     ''
                 ])    
-                output_filename = 'ESET ACCOUNTS.txt'
+                output_filename = 'ACCOUNTS.txt'
                 if args['advanced_key']:
-                    output_filename = 'ESET KEYS.txt'
+                    output_filename = 'KEYS.txt'
                     EPHK_obj = EPHK(email_obj, e_passwd, driver)
                     l_name, l_key, l_out_date, obtained_from_site = EPHK_obj.getLD()
                     l_out_date = l_out_date.replace(".", "/")
@@ -615,7 +615,7 @@ def main(disable_exit=False):
                         activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                         hashtags = '\n\n\\#ESET \\#НОД32 \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         photo_attachment = 'photo-203143822_457239283'
-                        bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Отдать голос\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)\n\n" + "[🚀 *QPNet VPN*](https://t\.me/qpnetrubot\?start\=1936643) - ваш надежный проводник в безопасный интернет!" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                        bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + please_comment +"\n\n[⚡️Поддержать группу\!](https://t\.me/boost/mynod32) \| [\@mynod32](https://t\.me/\+wLqOncLmqAIwZGM6)\n\n" + "[🚀 *QPNet VPN*](https://t\.me/qpnetrubot\?start\=1936643) \- ваш надежный проводник в безопасный интернет\!" + hashtags, disable_web_page_preview=True, disable_notification=True)
             # end
             logging.info(output_line)
             console_log(output_line)
