@@ -440,7 +440,7 @@ def main(disable_exit=False):
         vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
         vk2 = vk_session2.get_api()
         
-        vk_end = "\n\n\n\nАктивировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить - vk.cc/cMYJRe\n\n\n\n🚀 QPNet VPN - https://vk.cc/cNtH3q"
+        vk_end = "\n\n\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному ВПН - 🚀 QPNet VPN - https://vk.cc/cNtH3q"
         upload = VkUpload(vk_session)        
         driver = None
         webdriver_path = None
@@ -533,23 +533,23 @@ def main(disable_exit=False):
                     '-------------------------------------------------',
                     ''
                     ])
-                    output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ активации: `{l_key}`'
-                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ активации: {l_key}'
+                    output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ: `{l_key}`'
+                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ: {l_key}'
                     if args['key']:
-                        activate_products = '\n🔓 Ключ подходит для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
-                        activate_products_vk = '\n\n🔓 Ключ подходит для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
+                        activate_products = '\n🔓 Ключ для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
+                        activate_products_vk = '\n\n🔓 Ключ для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #NOD32 #ESS #ESSP #HomeSecurity #SmartSecurity #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239282'
                     if args['small_business_key']:
-                        activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
-                        activate_products_vk = '\n\n🔓 Ключ подходит для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
+                        activate_products = '\n🔓 Ключ для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
+                        activate_products_vk = '\n\n🔓 Ключ для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #NOD32 #ESBS #SmallBusiness #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
                     if args['vpn_codes']:
-                        activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
-                        activate_products_vk = '\n\n🔓 Ключ подходит для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
+                        activate_products = '\n🔓 Ключ для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
+                        activate_products_vk = '\n\n🔓 Ключ для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #NOD32 #ESBS #SmallBusiness #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
@@ -578,8 +578,8 @@ def main(disable_exit=False):
                             hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license \\#впн \\#прокси'
                             hashtags_vk = '\n\n#ESET #NOD32 #VPN #proxy #keys #license #впн #прокси #НОД32 #ключ #активация #халява'
                             photo_attachment = 'photo-203143822_457239280'
-                            license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
-                            license_keys_formatted_vk = "".join([f"🔐 Ключ активации: {key}\n" for key in vpn_codes_line.split(', ')])
+                            license_keys_formatted = "".join([f"🔐 Ключ: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
+                            license_keys_formatted_vk = "".join([f"🔐 Ключ: {key}\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{l_out_date}*\n\n{license_keys_formatted}\n'
                             output_line_vk = f'\n🛡 Продукт: ESET VPN\n\n🕐 Срок действия: {l_out_date}\n\n{license_keys_formatted_vk}\n'
                             vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
@@ -618,17 +618,17 @@ def main(disable_exit=False):
                             '---------------------------------------------------------------------',
                             ''
                         ])
-                    output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ активации: `{l_key}`'
-                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ активации: {l_key}\n'
+                    output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ: `{l_key}`'
+                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ: {l_key}\n'
                     if args['key']:
-                        activate_products = '\n🔓 Ключ подходит для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
-                        activate_products_vk = '\n\n🔓 Ключ подходит для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
+                        activate_products = '\n🔓 Ключ для: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
+                        activate_products_vk = '\n\n🔓 Ключ для: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
                         hashtags = '\n\n\#ESET \\#NOD32 \\#НОД32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #NOD32 #ESS #ESSP #HomeSecurity #SmartSecurity #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239282'
                     if args['small_business_key']:
-                        activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
-                        activate_products_vk = '\n\n🔓 Ключ подходит для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
+                        activate_products = '\n🔓 Ключ для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
+                        activate_products_vk = '\n\n🔓 Ключ для: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
                         hashtags = '\n\n\\#ESET \\#НОД32 \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #НОД32 #NOD32 #ESBS #SmallBusiness #keys #license #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
@@ -716,3 +716,4 @@ if __name__ == '__main__':
                     main(disable_exit=True)
             except KeyboardInterrupt:
                 exit_program(0)
+
