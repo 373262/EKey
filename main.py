@@ -440,7 +440,7 @@ def main(disable_exit=False):
         vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
         vk2 = vk_session2.get_api()
         
-        vk_end = "\n\n\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному ВПН - 🚀 QPNet VPN - https://vk.cc/cNtH3q"
+        vk_end = "\n\n\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному КВН - 🚀 QPNet VPN - https://vk.cc/cNtH3q"
         upload = VkUpload(vk_session)        
         driver = None
         webdriver_path = None
@@ -575,8 +575,8 @@ def main(disable_exit=False):
                             '-------------------------------------------------',
                             ''
                             ])
-                            hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license \\#впн \\#прокси'
-                            hashtags_vk = '\n\n#ESET #NOD32 #VPN #proxy #keys #license #впн #прокси #НОД32 #ключ #активация #халява'
+                            hashtags = '\n\n\\#ESET \\#NOD32 \\#VPN \\#proxy \\#keys \\#license \\#КВН \\#прокси'
+                            hashtags_vk = '\n\n#ESET #NOD32 #VPN #proxy #keys #license #КВН #прокси #НОД32 #ключ #активация #халява'
                             photo_attachment = 'photo-203143822_457239280'
                             license_keys_formatted = "".join([f"🔐 Ключ: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             license_keys_formatted_vk = "".join([f"🔐 Ключ: {key}\n" for key in vpn_codes_line.split(', ')])
@@ -716,5 +716,6 @@ if __name__ == '__main__':
                     main(disable_exit=True)
             except KeyboardInterrupt:
                 exit_program(0)
+
 
 
