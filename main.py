@@ -440,7 +440,7 @@ def main(disable_exit=False):
         vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
         vk2 = vk_session2.get_api()
         
-        vk_end = "\n\n\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному КВН - 🚀 QPNet - https://vk.cc/cNtH3q"
+        vk_end = "\n\n\n\n⚠️ Перед активацией ключом необходимо выйти из учетной записи ESET\n\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному КВН - 🚀 QPNet - https://vk.cc/cNtH3q"
         upload = VkUpload(vk_session)        
         driver = None
         webdriver_path = None
@@ -716,6 +716,7 @@ if __name__ == '__main__':
                     main(disable_exit=True)
             except KeyboardInterrupt:
                 exit_program(0)
+
 
 
 
