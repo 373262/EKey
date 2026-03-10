@@ -440,7 +440,7 @@ def main(disable_exit=False):
         vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
         vk2 = vk_session2.get_api()
         
-        vk_end = "\n\n\n\n⚠️ Перед активацией ключом необходимо выйти из учетной записи ESET\n\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному КВН - 🚀 QPNet - https://vk.cc/cNtH3q"
+        vk_end = "\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному КВН - 🚀 QPNet - https://vk.cc/cNtH3q"
         upload = VkUpload(vk_session)        
         driver = None
         webdriver_path = None
@@ -533,26 +533,55 @@ def main(disable_exit=False):
                     '-------------------------------------------------',
                     ''
                     ])
-                    output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ: `{l_key}`'
-                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ: {l_key}'
+                    _warning = '⚠️ Перед активацией ключом необходимо выйти из учётной записи ESET'
                     if args['key']:
-                        activate_products = '\n🔓 Активирует: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
-                        activate_products_vk = '\n\n🔓 Активирует: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
+                        _activate_list_tg = (
+                            '✔ ESET Smart Security Premium\n'
+                            '✔ ESET HOME Security Premium\n'
+                            '✔ ESET Mobile Security'
+                        )
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #NOD32 #ESS #ESSP #HomeSecurity #SmartSecurity #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239282'
                     if args['small_business_key']:
-                        activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
-                        activate_products_vk = '\n\n🔓 Активирует: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
+                        _activate_list_tg = (
+                            '✔ ESET Small Business Security\n'
+                            '✔ ESET Cyber Security \\(MacOS\\)\n'
+                            '✔ ESET Mobile Security\n'
+                            '✔ ESET Smart TV Security\n'
+                            '✔ ESET Safe Server'
+                        )
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #NOD32 #ESBS #SmallBusiness #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
                     if args['vpn_codes']:
-                        activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
-                        activate_products_vk = '\n\n🔓 Активирует: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
+                        _activate_list_tg = (
+                            '✔ ESET Small Business Security\n'
+                            '✔ ESET Cyber Security \\(MacOS\\)\n'
+                            '✔ ESET Mobile Security\n'
+                            '✔ ESET Smart TV Security\n'
+                            '✔ ESET Safe Server'
+                        )
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         hashtags_vk = '\n\n#ESET #NOD32 #ESBS #SmallBusiness #keys #license #НОД32 #ключ #активация #халява'
                         photo_attachment = 'photo-203143822_457239283'
+                    _activate_list_vk = _activate_list_tg.replace('\\(', '(').replace('\\)', ')')
+                    output_line = (
+                        f'🔓 Активирует:\n{_activate_list_tg}\n\n'
+                        f'{_warning}\n\n'
+                        f'🛡 Ключ *{l_name}*\n'
+                        f'🕓 Срок действия: *{l_out_date}*\n'
+                        f'🔐 Ключ активации: `{l_key}`'
+                    )
+                    output_line_vk = (
+                        f'🔓 Активирует:\n{_activate_list_vk}\n\n'
+                        f'{_warning}\n\n'
+                        f'🛡 Ключ {l_name}\n'
+                        f'🕓 Срок действия: {l_out_date}\n'
+                        f'🔐 Ключ активации: {l_key}'
+                    )
+                    activate_products = ''
+                    activate_products_vk = ''
                     vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
                     vk2.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
                     if args['vpn_codes']:
@@ -618,22 +647,39 @@ def main(disable_exit=False):
                             '---------------------------------------------------------------------',
                             ''
                         ])
-                    output_line = f'\n🛡 Продукт: *{l_name}*\n🕐 Срок действия: *{l_out_date}*\n🔐 Ключ: `{l_key}`'
-                    output_line_vk = f'\n🛡 Продукт: {l_name}\n\n🕐 Срок действия: {l_out_date}\n\n🔐 Ключ: {l_key}\n'
-                    if args['key']:
-                        activate_products = '\n🔓 Активирует: *ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY*'
-                        activate_products_vk = '\n\n🔓 Активирует: ESET Smart Security Premium, ESET HOME Security Premium, ESET MOBILE SECURITY'
-                        hashtags = '\n\n\#ESET \\#NOD32 \\#НОД32 \\#ESS \\#ESSP \\#HomeSecurity \\#SmartSecurity \\#keys \\#license'
-                        hashtags_vk = '\n\n#ESET #NOD32 #ESS #ESSP #HomeSecurity #SmartSecurity #keys #license #НОД32 #ключ #активация #халява'
-                        photo_attachment = 'photo-203143822_457239282'
-                    if args['small_business_key']:
-                        activate_products = '\n🔓 Активирует: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
-                        activate_products_vk = '\n\n🔓 Активирует: ESET Small Business Security, ESET Cyber Security (MacOS), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server'
-                        hashtags = '\n\n\\#ESET \\#НОД32 \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
-                        hashtags_vk = '\n\n#ESET #НОД32 #NOD32 #ESBS #SmallBusiness #keys #license #ключ #активация #халява'
-                        photo_attachment = 'photo-203143822_457239283'
-                        vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
-                        vk2.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
+                    _warning = '⚠️ Перед активацией ключом необходимо выйти из учётной записи ESET'
+                    _activate_list_tg = (
+                        '✔ ESET Smart Security Premium\n'
+                        '✔ ESET Internet Security\n'
+                        '✔ ESET NOD32 Antivirus\n'
+                        '✔ ESET Endpoint Security\n'
+                        '✔ ESET Server Security\n'
+                        '✔ ESET Full Disk Encryption\n'
+                        '✔ ESET LiveGuard Advanced\n'
+                        '✔ ESET Mobile Threat Defense'
+                    )
+                    _activate_list_vk = _activate_list_tg
+                    hashtags = '\n\n\\#ESET \\#NOD32 \\#ESSP \\#ESS \\#EIS \\#EAV \\#InternetSecurity \\#Antivirus \\#keys \\#license'
+                    hashtags_vk = '\n\n#ESET #NOD32 #ESSP #ESS #EIS #EAV #InternetSecurity #Antivirus #keys #license #НОД32 #ключ #активация #халява'
+                    photo_attachment = 'photo-203143822_457239282'
+                    output_line = (
+                        f'🔓 Активирует:\n{_activate_list_tg}\n\n'
+                        f'{_warning}\n\n'
+                        f'🛡 Ключ *{l_name}*\n'
+                        f'🕓 Срок действия: *{l_out_date}*\n'
+                        f'🔐 Ключ активации: `{l_key}`'
+                    )
+                    output_line_vk = (
+                        f'🔓 Активирует:\n{_activate_list_vk}\n\n'
+                        f'{_warning}\n\n'
+                        f'🛡 Ключ {l_name}\n'
+                        f'🕓 Срок действия: {l_out_date}\n'
+                        f'🔐 Ключ активации: {l_key}'
+                    )
+                    activate_products = ''
+                    activate_products_vk = ''
+                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
+                    vk2.wall.post(owner_id=-229183047, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
             # end
             logging.info(output_line)
             console_log(output_line)
@@ -716,8 +762,3 @@ if __name__ == '__main__':
                     main(disable_exit=True)
             except KeyboardInterrupt:
                 exit_program(0)
-
-
-
-
-
