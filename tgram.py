@@ -440,7 +440,7 @@ def main(disable_exit=False):
         vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
         vk2 = vk_session2.get_api()
         
-        vk_end = "\n\n\n\nАктивировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить - vk.cc/cHjcEr\n\n\n\nНе успеваешь взять бесплатный ключ?\n✅ Подписывайся на наш Telegram канал t.me/mynod32\n✅ Опция \"Персональный ключ на 30 дней\" - 50 руб.\n✅ Опция \"Ключ на 90 дней для EIS, EAV\" - 120 руб."
+        vk_end = "\n\n\n\nАктивировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить - vk.cc/cHjcEr\n\n\n\nНе успеваешь взять бесплатный ключ?\n✅ Подписывайся на наш Telegram канал telegram.me/mynod32\n✅ Опция \"Персональный ключ на 30 дней\" - 50 руб.\n✅ Опция \"Ключ на 90 дней для EIS, EAV\" - 120 руб."
         upload = VkUpload(vk_session)        
         driver = None
         webdriver_path = None
@@ -546,7 +546,7 @@ def main(disable_exit=False):
                         activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                         hashtags = '\n\n\\#ESET \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         photo_attachment = 'photo-203143822_457239283'
-                    bot.send_message(-1002475137672, output_line + activate_products + "\n\n" + ">>⚠ Перед активацией ключом необходимо выйти из учетной записи ESET" +"\n\n" + please_comment +"\n\n[⚡️Поддержать\!](https://t\.me/boost/mynod32) \| [💰*Ключ на 90 дней*](https://t\.me/mynod32\?direct)\n\n" + "||[🚀 *QPNet*](https://t\.me/qpnetrubot\?start\=tggroup) \- быстрый, безопасный КВН\!||" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                    bot.send_message(-1002475137672, output_line + activate_products + "\n\n" + ">>⚠ Перед активацией ключом необходимо выйти из учетной записи ESET" +"\n\n" + please_comment +"\n\n[⚡️Поддержать\!](https://telegram\.me/boost/mynod32) \| [💰*Ключ на 90 дней*](https://telegram\.me/mynod32\?direct)\n\n" + "||[🚀 *QPNet*](https://telegram\.me/qpnetrubot\?start\=tggroup) \- быстрый, безопасный КВН\!||" + hashtags, disable_web_page_preview=True, disable_notification=True)
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
@@ -571,7 +571,7 @@ def main(disable_exit=False):
                             photo_attachment = 'photo-203143822_457239280'
                             license_keys_formatted = "".join([f"🔐 Ключ активации: `{key}`\n\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{l_out_date}*\n\n{license_keys_formatted}\n'
-                            bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + ">>⚠ Перед активацией ключом необходимо выйти из учетной записи ESET" +"\n\n" + please_comment +"\n\n[⚡️Поддержать\!](https://t\.me/boost/mynod32) \| [💰*Ключ на 90 дней*](https://t\.me/mynod32\?direct)\n\n" + "||[🚀 *QPNet*](https://t\.me/qpnetrubot\?start\=tggroup) \- быстрый, безопасный КВН\!||" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                            bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + ">>⚠ Перед активацией ключом необходимо выйти из учетной записи ESET" +"\n\n" + please_comment +"\n\n[⚡️Поддержать\!](https://telegram\.me/boost/mynod32) \| [💰*Ключ на 90 дней*](https://telegram\.me/mynod32\?direct)\n\n" + "||[🚀 *QPNet*](https://telegram\.me/qpnetrubot\?start\=tggroup) \- быстрый, безопасный КВН\!||" + hashtags, disable_web_page_preview=True, disable_notification=True)
 
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
@@ -615,7 +615,7 @@ def main(disable_exit=False):
                         activate_products = '\n🔓 Ключ подходит для: *ESET Small Business Security, ESET Cyber Security \(MacOS\), ESET Mobile Security, ESET Smart TV Security, ESET Safe Server*'
                         hashtags = '\n\n\\#ESET \\#НОД32 \\#NOD32 \\#ESBS \\#SmallBusiness \\#keys \\#license'
                         photo_attachment = 'photo-203143822_457239283'
-                        bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + ">>⚠ Перед активацией ключом необходимо выйти из учетной записи ESET" +"\n\n" + please_comment +"\n\n[⚡️Поддержать\!](https://t\.me/boost/mynod32) \| [💰*Ключ на 90 дней*](https://t\.me/mynod32\?direct)\n\n" + "||[🚀 *QPNet*](https://t\.me/qpnetrubot\?start\=tggroup) \- быстрый, безопасный КВН\!||" + hashtags, disable_web_page_preview=True, disable_notification=True)
+                        bot.send_message(-1002475137672, output_line + activate_products +  "\n\n" + ">>⚠ Перед активацией ключом необходимо выйти из учетной записи ESET" +"\n\n" + please_comment +"\n\n[⚡️Поддержать\!](https://telegram\.me/boost/mynod32) \| [💰*Ключ на 90 дней*](https://telegram\.me/mynod32\?direct)\n\n" + "||[🚀 *QPNet*](https://telegram\.me/qpnetrubot\?start\=tggroup) \- быстрый, безопасный КВН\!||" + hashtags, disable_web_page_preview=True, disable_notification=True)
             # end
             logging.info(output_line)
             console_log(output_line)
