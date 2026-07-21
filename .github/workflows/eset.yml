@@ -47,18 +47,17 @@ jobs:
   Linux:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate key
-        if: github.event.inputs.os == 'Linux'
+      - name: Generate key on Linux
         run: |
-          ACCOUNT=${{ github.event.inputs.account }}
-          KEY=${{ github.event.inputs.key }}
-          MAIL=${{ github.event.inputs.mail }}
-          KEY_TYPE=${{ github.event.inputs.key_type }}
+          ACCOUNT=0
+          KEY=2
+          MAIL=emailfake
+          KEY_TYPE=--key
+          BRANCH=main
 
-          git clone https://github.com/shadowcopyrz/etkg.git
-          cd etkg
-          
-          # Setup env
+          git clone -b ${BRANCH} https://github.com/373262/EKey.git
+          cd EKey
+
           sudo apt update
           sudo apt install -y python3-pip python3-venv
           python3 -m venv venv
