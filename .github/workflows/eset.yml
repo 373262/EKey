@@ -1,5 +1,58 @@
 name: Generator Auto
 on:
+ # schedule: #if need schedule 
+ #   - cron: "0 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      account:
+        description: 'Number of Accounts to be generated (default = 0)'
+        required: false
+        default: '0'
+        type: string
+      key:
+        description: 'Number of Keys to be generated (default = 1)'
+        required: false
+        default: '1'
+        type: string
+      mail:
+        description: 'Choose the mail provider to generate license'
+        required: true
+        type: choice
+        options:
+          - 1secmail
+          - guerrillamail
+          - developermail
+          - mailticking
+          - fakemail
+          - inboxes
+          - incognitomail
+          - emailfake
+        default: emailfake
+      key_type:
+        description: 'Modes of operation'
+        required: true
+        type: choice
+        options:
+          - --key
+          - --small-business-key
+        default: --key
+      os:
+        description: 'Operating System of runner (Linux, macOS, Windows)'
+        required: true
+        type: choice
+        options:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        default: windows-latest
+      branch:
+        description: "Repository branch (don't touch it if you don't know what it is!!!)"
+        required: false
+        type: choice
+        options:
+          - main
+          - test
+        default: main
 jobs:
   Linux:
     runs-on: ubuntu-latest
