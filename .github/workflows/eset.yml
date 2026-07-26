@@ -1,5 +1,5 @@
 name: Generator Auto
-
+on:
 jobs:
   Linux:
     runs-on: ubuntu-latest
