@@ -429,7 +429,7 @@ def main(disable_exit=False):
                 #console_log(e, ERROR)
         
         # initialization and configuration of everything necessary for work
-        please_comment = "Активировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить \- vk\.cc/cHjcEr"
+        please_comment = "Активировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬"
         token_value = args['token']
         bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         vk_token_value = args['vktoken']
@@ -440,7 +440,7 @@ def main(disable_exit=False):
         vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
         vk2 = vk_session2.get_api()
         
-        vk_end = "\n\n\n\nАктивировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n🍺 Поблагодарить - vk.cc/cHjcEr\n\n\n\nНе успеваешь взять бесплатный ключ?\n✅ Подписывайся на наш Telegram канал telegram.me/mynod32\n✅ Опция \"Персональный ключ на 30 дней\" - 50 руб.\n✅ Опция \"Ключ на 90 дней для EIS, EAV\" - 120 руб."
+        vk_end = "\n\n\n\nАктивировали ⁉\nПоставьте лайк ❤ и напишите в комментарии 💬\n\n\nНе успеваешь взять бесплатный ключ?\n✅ Подписывайся на наш Telegram канал telegram.me/mynod32\n✅ Опция \"Персональный ключ на 30 дней\" - 50 руб.\n✅ Опция \"Ключ на 90 дней для EIS, EAV\" - 120 руб."
         upload = VkUpload(vk_session)        
         driver = None
         webdriver_path = None
