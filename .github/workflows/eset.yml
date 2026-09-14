@@ -13,7 +13,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=1
-          MAIL=emailfake
+          MAIL=inboxes
           KEY_TYPE=--key
           BRANCH=main
 
