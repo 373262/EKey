@@ -13,7 +13,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=1
-          MAIL=inboxes
+          MAIL=emailfake
           KEY_TYPE=--key
           BRANCH=main
 
@@ -55,8 +55,8 @@ jobs:
           KEY_TYPE=--key
           BRANCH=main
 
-          git clone -b ${BRANCH} https://github.com/373262/EKey.git
-          cd EKey
+          git clone -b ${BRANCH} https://github.com/shadowcopyrz/etkg.git
+          cd etkg
 
           brew install python
           python3 -m venv venv
