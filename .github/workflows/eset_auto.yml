@@ -52,7 +52,7 @@ jobs:
           ACCOUNT=0
           KEY=2
           # MAIL=emailfake
-          MAIL=developermail
+          MAIL=inboxes
           KEY_TYPE=--key
           BRANCH=main
 
