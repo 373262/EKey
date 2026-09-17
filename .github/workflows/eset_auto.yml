@@ -50,7 +50,7 @@ jobs:
       - name: Generate key on macOS
         run: |
           ACCOUNT=0
-          KEY=2
+          KEY=3
           # MAIL=emailfake
           MAIL=inboxes
           KEY_TYPE=--key
