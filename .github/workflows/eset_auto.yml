@@ -13,7 +13,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=inboxes
+          MAIL=guerrillamail
           KEY_TYPE=--key
           BRANCH=main
 
@@ -51,7 +51,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=inboxes
+          MAIL=guerrillamail
           KEY_TYPE=--key
           BRANCH=main
 
