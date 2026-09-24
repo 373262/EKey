@@ -12,7 +12,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=emailfake
+          MAIL=fakemail
           KEY_TYPE=--key
           BRANCH=main
 
@@ -50,7 +50,7 @@ jobs:
         run: |
           ACCOUNT=0
           KEY=2
-          MAIL=emailfake
+          MAIL=fakemail
           KEY_TYPE=--key
           BRANCH=main
 
