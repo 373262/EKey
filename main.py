@@ -677,8 +677,9 @@ def main(disable_exit=False):
                     )
                     activate_products = ''
                     activate_products_vk = ''
-                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
-                    vk2.wall.post(owner_id=-229183047, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
+                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + vk_end, attachments=photo_attachment)
+                    #vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
+                    #vk2.wall.post(owner_id=-229183047, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
             # end
             logging.info(output_line)
             console_log(output_line)
