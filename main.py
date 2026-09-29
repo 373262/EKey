@@ -581,8 +581,8 @@ def main(disable_exit=False):
                     )
                     activate_products = ''
                     activate_products_vk = ''
-                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
-                    vk2.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
+                    vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=86400)
+                    #vk2.wall.post(owner_id=-229183047, message=output_line_vk + activate_products_vk + vk_end, attachments=photo_attachment, donut_paid_duration=86400)
                     if args['vpn_codes']:
                         EV_obj = EV(email_obj, driver, ER_obj.window_handle)
                         EV_obj.sendRequestForVPNCodes()
