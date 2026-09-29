@@ -433,10 +433,10 @@ def main(disable_exit=False):
         bot = telebot.TeleBot(token_value, parse_mode='MARKDOWNv2')
         vk_token_value = args['vktoken']
         vk_group_id_value = args['vkgroupid']
-        vk_session = vk_api.VkApi(token=vk_token_value,api_version=5.131)
+        vk_session = vk_api.VkApi(token=vk_token_value,api_version=5.199)
         vk = vk_session.get_api()
         vk_token_value2 = args['vktoken2']
-        vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.131)
+        vk_session2 = vk_api.VkApi(token=vk_token_value2,api_version=5.199)
         vk2 = vk_session2.get_api()
         
         vk_end = "\n\nАктивировали ⁉\nС Вас ❤ и 💬\n\n\nПодключайте к нашему быстрому и безопасному КВН - 🚀 QPNet - https://vk.cc/cNtH3q"
