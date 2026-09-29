@@ -610,8 +610,9 @@ def main(disable_exit=False):
                             license_keys_formatted_vk = "".join([f"🔐 Ключ: {key}\n" for key in vpn_codes_line.split(', ')])
                             output_line = f'\n🛡 Продукт: *ESET VPN*\n🕐 Срок действия: *{l_out_date}*\n\n{license_keys_formatted}\n'
                             output_line_vk = f'\n🛡 Продукт: ESET VPN\n\n🕐 Срок действия: {l_out_date}\n\n{license_keys_formatted_vk}\n'
-                            vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
-                            vk2.wall.post(owner_id=-229183047, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
+                            vk.wall.post(owner_id=vk_group_id_value, message=output_line_vk + vk_end, attachments=photo_attachment, donut_level_id
+641, donut_paid_duration=3600)
+                            #vk2.wall.post(owner_id=-229183047, message=output_line_vk + vk_end, attachments=photo_attachment, donut_paid_duration=3600)
 
             # ESET ProtectHub
             elif args['protecthub_account'] or args['advanced_key']:
