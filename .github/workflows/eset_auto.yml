@@ -12,7 +12,7 @@ jobs:
       - name: Generate key on Linux
         run: |
           ACCOUNT=0
-          KEY=4
+          KEY=3
           MAIL=fakemail
           KEY_TYPE=--key
           BRANCH=main
@@ -50,7 +50,7 @@ jobs:
       - name: Generate key on macOS
         run: |
           ACCOUNT=0
-          KEY=4
+          KEY=3
           MAIL=fakemail
           KEY_TYPE=--key
           BRANCH=main
