@@ -1,7 +1,7 @@
 name: Generator Auto HOME Tgram
 on:
   schedule:
-    - cron: "47 * * * *"
+    - cron: "16 * * * *"
   workflow_dispatch:  # Optional: keep for manual testing
 
 jobs:
