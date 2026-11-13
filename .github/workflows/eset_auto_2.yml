@@ -2,7 +2,7 @@ name: Generator Auto Business
 
 on:
   schedule:
-    - cron: "0 */2 * * *"  # Runs every hour
+    - cron: "17 */1 * * *"
   workflow_dispatch:  # Optional: keep for manual testing
 
 jobs:
